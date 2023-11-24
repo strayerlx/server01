@@ -1,8 +1,8 @@
 let http = require('http')
 
 let users = [
-    { id: 1, name: 'sherry1' },
-    { id: 2, name: 'sherry2' },
+    { id: 1, name: 'sherry111' },
+    { id: 2, name: 'sherry222' },
 ]
 
 let server = http.createServer(function (req, res) {
@@ -16,5 +16,5 @@ let server = http.createServer(function (req, res) {
 })
 
 server.listen(3001, () => {
-    console.log('server success 3001')
+    console.log('server launch success 3001')
 })
