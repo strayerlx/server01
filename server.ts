@@ -2,13 +2,13 @@ let http = require('http')
 
 let users = [
     { id: 1, name: 'sherry' },
-    { id: 2, name: 'Gin' },
-    { id: 3, name: 'Vote' },
-    { id: 4, name: 'Konan' },
-    { id: 5, name: 'bell' },
+    { id: 4, name: 'Gin' },
+    { id: 8, name: 'Vote' },
+    { id: 6, name: 'Konan' },
+    { id: 9, name: 'bell' },
 ]
 
-let server = http.createServer(function (req, res) {
+let server = http.createServer(function (req: any, res: any) {
     res.setHeader('Access-Control-Allow-Origin', '*')
     if (req.url === '/api/users') {
         res.end(JSON.stringify(users))
