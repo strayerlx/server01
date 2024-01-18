@@ -1,25 +1,25 @@
-let http = require('http')
+let express = require('express');
 
 let users = [
-    { id: 1, name: 'sherry' },
-    { id: 4, name: 'Gin' },
-    { id: 8, name: 'Vote' },
-    { id: 6, name: 'Konan' },
-    { id: 9, name: 'bell' },
+    { id: 11110, name: 'sherry3' },
+    { id: 4, name: 'Gin3' },
+    { id: 8, name: 'Vote3' },
+    { id: 6, name: 'Konan3' },
+    { id: 9, name: 'bell3' },
 ]
 
-let server = http.createServer(function (req: any, res: any) {
-    res.setHeader('Access-Control-Allow-Origin', '*')
-    if (req.url === '/api/users') {
-        res.end(JSON.stringify(users))
-    } else {
-        res.end('Not Found')
-    }
+const app = express();
 
-})
+const PORT = 3001;
 
-server.listen(3000, () => {
-    console.log('server launch success 3000...')
+app.use(express.json())
+
+app.listen(PORT, async () => {
+    console.log(`server launch success ${PORT}...`)
+
+    app.get('/', (req: any, res: any) => {
+        res.status(200).send(users)
+    })
 })
 
 // =============================================================================================

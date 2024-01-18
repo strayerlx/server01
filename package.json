@@ -6,14 +6,21 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "dev": "nodemon server.ts",
-    "start": "pm2 start ./server.ts --name server --watch"
+    "start": "pm2 start ecosystem.config.js",
+    "stop": "pm2 stop ecosystem.config.js"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "ws": "^8.14.2"
+    "express": "^4.18.2",
+    "mysql2": "^3.6.5",
+    "ws": "^8.14.2",
+    "sequelize": "^6.35.2",
+    "sequelize-typescript": "^2.1.6"
   },
   "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/mysql": "^2.15.25",
     "@types/node": "^20.9.4",
     "@types/ws": "^8.5.10",
     "nodemon": "^3.0.1",
