@@ -14,6 +14,54 @@ const PORT = 3001;
 
 app.use(express.json())
 
+const axios = require('axios');
+
+const chainId = 2221; // Goerli Network
+const projectId = '7ecf7953-abfe-42ee-b1eb-756ce77a53f1';
+const projectServerKey = 'sbYlsBwz82YUmqwjGPpHCXiN9AVP18aWv2gFzzdW';
+
+
+async function n1() {
+    console.log('n1')
+
+    const response = await axios.post(`https://rpc.particle.network/evm-chain?chainId=${chainId}`, {
+        method: 'eth_getBalance',
+        params: [
+            '0xE860aE9379B1902DC08F67F50de7b9CC066AF0FF',
+            'latest',
+        ],
+    }, {
+        auth: {
+            username: projectId,
+            password: projectServerKey,
+        },
+    });
+    console.log(response.data);
+}
+
+async function n2() {
+    const response = await axios.post(
+        "https://api.particle.network/server/rpc",
+        {
+            jsonrpc: "2.0",
+            id: 0,
+            method: "getUserInfo",
+            params: ["2d7b1ff2-0791-4fd2-a26e-16fbcaefdf8a", "Particle Auth User Token"],
+        },
+        {
+            auth: {
+                username: projectId,
+                password: projectServerKey,
+            },
+        }
+    );
+
+    console.log(response.data);
+}
+
+// n1()
+n2()
+
 app.listen(PORT, async () => {
     console.log(`server launch success ${PORT}...`)
 
